@@ -1,35 +1,53 @@
-import React, { useRef } from 'react'
-import { useAuth } from '@component/contexts/AuthContexts'
+import React, { useRef, useState } from 'react'
+import {useAuth} from '../../contexts/AuthContexts'
 
 function Signup() {
-    const emailRef = useRef()
-    const senhaRef = useRef()
-    const senhaConfirmaRef = useRef()
-    const {signup} = useAuth()
+    const emailRef = useRef();
+    const senhaRef = useRef();
+    const senhaConfirmaRef = useRef();
+    const { signup } = useAuth();
+    const [error, setError] = useState('');
+    const [carregando, setCarregando] = useState(false);
 
-    function handleSubmit(e) {
+    async function handleSubmit (e) {
         e.preventDefault()
 
-        signup(emailRef.current.value,senhaRef.current.value)
+        if (senhaRef.current.value !== senhaConfirmaRef.current.value) {
+            return setError('as senhas não são iguais')
+        }
+
+        try {
+            setError('')
+            setCarregando(true)
+            await signup(emailRef.current.value, senhaRef.current.value)
+        } catch {
+            setError('falha ao criar conta')
+        }
+        setCarregando(false)
     }
 
-  return (
-    <>
-    <div>
-        <h1>Crie sua conta</h1>
-        <form>
-            <label>Email</label>
-            <input ref={emailRef} type='email' required></input>
-            <label>Senha</label>
-            <input ref={senhaRef} type='password' required></input>
-            <label>Confirme a senha</label>
-            <input id='email' ref={senhaConfirmaRef} type='password' required></input>
-            <button type='submit'>Criar Conta</button>
-        </form>
-    </div>
-    <div>Já possui uma conta? Log In</div>
-    </>
-  )
+    return (
+        <div className='p-2 bg-orange-400 m-6 w-auto h-min rounded-xl'>
+            <h1 className='text-white font-bold text-center'>Criar conta</h1>
+            {error && <h1 className='text-center text-red-700 font-bold'>{error}</h1>}
+            <form onSubmit={handleSubmit}>
+            <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-orange-500 block w-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 m-2" 
+            type='email' placeholder='email' 
+            ref={emailRef} required/>
+
+            <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 m-2" 
+            type='password' placeholder='senha'
+            ref={senhaRef}/>
+
+            <input className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 m-2" 
+            type='password' placeholder='confirme sua senha'
+            ref={senhaConfirmaRef}/>
+
+            <button type='submit' disabled={carregando} className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full m-2"> Entrar </button>
+
+            <button className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-full m-2">Sair</button>
+            </form>
+        </div>)
 }
 
 export default Signup

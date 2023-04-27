@@ -1,9 +1,9 @@
 import React from 'react'
 
-function sidebar() {
+function Sidebar() {
   return (
-    <div>sidebar</div>
+    <div className='top-0 left-0 h-screen w-48 m-0 flex flex-col bg-orange-400'>sidebar</div>
   )
 }
 
-export default sidebar
+export default Sidebar
