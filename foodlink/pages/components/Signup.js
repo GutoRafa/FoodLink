@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
 
 function Signup() {
+  const nomeRef = useRef();
   const emailRef = useRef();
   const senhaRef = useRef();
   const senhaConfirmaRef = useRef();
@@ -19,7 +20,11 @@ function Signup() {
     try {
       setError("");
       setCarregando(true);
-      await signup(emailRef.current.value, senhaRef.current.value);
+      await signup(
+        emailRef.current.value,
+        senhaRef.current.value,
+        nomeRef.current.value
+      );
     } catch {
       setError("falha ao criar conta");
     }
@@ -32,7 +37,14 @@ function Signup() {
       {error && <h1 className="text-center text-red-700 font-bold">{error}</h1>}
       <form onSubmit={handleSubmit} id="signup">
         <input
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-orange-500 block w-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 m-2"
+          className="input-padrao"
+          type="text"
+          placeholder="nome"
+          ref={nomeRef}
+        />
+
+        <input
+          className="input-padrao"
           type="email"
           placeholder="email"
           ref={emailRef}
@@ -40,24 +52,23 @@ function Signup() {
         />
 
         <input
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 m-2"
+          className="input-padrao"
           type="password"
           placeholder="senha"
           ref={senhaRef}
         />
 
         <input
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500 m-2"
+          className="input-padrao"
           type="password"
           placeholder="confirme sua senha"
           ref={senhaConfirmaRef}
         />
 
-        <button
-          type="submit"
-          disabled={carregando}
-          className="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-xl m-2"
-        >
+      <input type="file" 
+      />
+
+        <button type="submit" disabled={carregando} className="btn-pequeno">
           Criar conta
         </button>
       </form>
