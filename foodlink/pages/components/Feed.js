@@ -1,9 +1,11 @@
 import React from 'react'
-import Perfil from './Perfil'
+import InputBox from './InputBox'
+import {useAuth} from '../../contexts/AuthContexts'
 
 function Feed() {
+  const {currentUser} = useAuth()
   return (
-    <div className='top-0 left-0 h-screen w-[40%] m-2 flex flex-col bg-orange-400'></div>
+    <div>{currentUser && <InputBox/>}</div>
   )
 }
 

@@ -1,14 +1,16 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
+import { upload } from "@component/firebase";
 
 function Signup() {
   const nomeRef = useRef();
   const emailRef = useRef();
   const senhaRef = useRef();
   const senhaConfirmaRef = useRef();
-  const { signup } = useAuth();
+  const { signup} = useAuth();
   const [error, setError] = useState("");
   const [carregando, setCarregando] = useState(false);
+
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -24,8 +26,7 @@ function Signup() {
         emailRef.current.value,
         senhaRef.current.value,
         nomeRef.current.value
-      );
-    } catch {
+      )} catch {
       setError("falha ao criar conta");
     }
     setCarregando(false);
@@ -64,9 +65,6 @@ function Signup() {
           placeholder="confirme sua senha"
           ref={senhaConfirmaRef}
         />
-
-      <input type="file" 
-      />
 
         <button type="submit" disabled={carregando} className="btn-pequeno">
           Criar conta

@@ -19,12 +19,21 @@ export default function Home() {
         <title>FoodLink</title>
       </Head>
       <main className="bg-orange-700">
-        <div className="flex justify-center">
+        <div className="flex flex-row justify-center">
+          <div>
           <Sidebar />
+          </div>
+
+          <div className="mx-2 p-2 w-[50%] bg-orange-400">
           <Feed />
+          </div>
+
+          <div>
           {!currentUser && <Login />}
           {!currentUser && <Signup />}
           {currentUser && <Perfil />}
+          </div>
+
         </div>
       </main>
     </>
