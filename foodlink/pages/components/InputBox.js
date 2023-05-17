@@ -8,7 +8,7 @@ import {
   setDoc,
   doc,
 } from "firebase/firestore";
-import { ref, getDownloadURL, uploadString } from "firebase/storage";
+import { ref, getDownloadURL, uploadBytes, uploadString } from "firebase/storage";
 
 export default function InputBox() {
   const { currentUser } = useAuth();
@@ -17,37 +17,26 @@ export default function InputBox() {
   const arquivoRef = useRef();
   const [imagem, setImagem] = useState(null);
 
-  function postar(e) {
+  const postar = () => {
     e.preventDefault();
-    if (descRef.current.value === "" || precoRef.current.value === "") {
+    if (
+      descRef.current.value === "" ||
+      precoRef.current.value === "" ||
+      !imagem
+    ) {
       return alert("preencha todos os campos");
     }
     try {
-      if (imagem) {
-        const storageRef = ref(storage, `posts/${currentUser.uid + serverTimestamp()}`);
-        const uploadTask = uploadString(storageRef, imagem, "data_url");
-        removerImagem();
-
-        uploadTask.on("state_changed", null, null, () => {
-          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-            const docRef = addDoc(collection(db, "posts"), {
-              descricao: descRef.current.value,
-              preco: precoRef.current.value,
-              imagem: url,
-              timestamp: serverTimestamp(),
-              usuario: currentUser.displayName,
-            });
-          });
-        });
-      }
+      const storageRef = ref(storage, `posts/${v4()}`);
+      uploadString(storageRef, imagem, "data_url")
     } catch (e) {
-      console.error("erro ao postar");
+      console.error(err);
     }
     descRef.current.value = "";
     precoRef.current.value = "";
-  }
+  };
 
-  function addImagem(e) {
+  const addImagem = (e) => {
     const reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
@@ -55,7 +44,7 @@ export default function InputBox() {
 
     reader.onload = (readerEvent) => {
       setImagem(readerEvent.target.result);
-    };
+    }
   }
 
   function removerImagem() {
@@ -86,7 +75,12 @@ export default function InputBox() {
             className="rounded bg-orange-500 w-12 h-12 flex justify-center"
             onClick={() => arquivoRef.current.click()}
           >
-            <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
+            <input
+              type="file"
+              onChange={addImagem}
+              ref={arquivoRef}
+              hidden
+            />
             <img
               className="w-10 h-10 p-1"
               src="https://svgsilh.com/svg_v2/1710849.svg"
