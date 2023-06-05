@@ -24,7 +24,7 @@ export default function Home() {
           <Sidebar />
           </div>
 
-          <div className="mx-2 p-2 w-[50%] bg-orange-400">
+          <div className="mx-2 p-2 w-[30%] bg-orange-400">
           <Feed />
           </div>
 

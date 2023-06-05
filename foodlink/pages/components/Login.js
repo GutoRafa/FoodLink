@@ -26,7 +26,7 @@ export default function Login() {
         {error && (
           <h1 className="text-center text-red-700 font-bold">{error}</h1>
         )}
-        <form onSubmit={handleSubmit} id="login">
+        <form className="flex flex-col items-center" onSubmit={handleSubmit} id="login">
           <input
             className="input-padrao"
             type="email"

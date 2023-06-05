@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
-import { upload } from "@component/firebase";
+import { updateProfile } from "firebase/auth";
 
 function Signup() {
   const nomeRef = useRef();
@@ -36,7 +36,7 @@ function Signup() {
     <div className="justify-center text-center p-2 bg-orange-400 m-6 w-auto h-min rounded-xl">
       <h1 className="text-white font-bold text-center">Crie sua conta</h1>
       {error && <h1 className="text-center text-red-700 font-bold">{error}</h1>}
-      <form onSubmit={handleSubmit} id="signup">
+      <form onSubmit={handleSubmit} className="flex flex-col items-center" id="signup">
         <input
           className="input-padrao"
           type="text"

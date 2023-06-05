@@ -1,7 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAuth , updateProfile } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
-import { getStorage, ref, uploadBytes , getDownloadURL } from "firebase/storage";
+import { getAuth} from "firebase/auth";
+import { getFirestore, setDoc , serverTimestamp , doc , addDoc, collection } from "firebase/firestore";
+import { getStorage, ref, uploadBytes , getDownloadURL, uploadString } from "firebase/storage";
+import { v4 } from "uuid";
 
 const firebaseConfig = {
   apiKey: "AIzaSyD8JUTQQslyjud89ZhPq0rmMPT_ZDeINqc",
@@ -19,13 +20,26 @@ export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
 
-// Storage functions
+// Storage
 
-export async function upload(file, nomeUsuario) {
-  const arquivoRef = ref(storage, 'fotoPerfil/' + `${nomeUsuario}` + '.png');
+export async function uploadStorage(file, local) {
+  const arquivoRef = ref(storage,`${local + "/" + v4()}` + '.png');
   
-  const snapshot = await uploadBytes(arquivoRef, file);
-  const photoURL = await getDownloadURL(arquivoRef);
+  const snapshot = await uploadString(arquivoRef, file, "data_url");
+  const postURL = await getDownloadURL(arquivoRef);
+  return postURL;
+}
 
-  updateProfile(currentUser, {photoURL});
+// Firestore
+
+export async function criarDocPost(descricaoTexto, precoTexto, imgUrl, nomeDisplayTexto, uidTexto) {
+  const docData = {
+    descricao: descricaoTexto,
+    preco: precoTexto,
+    imagem: imgUrl,
+    horario: serverTimestamp(),
+    nomeDisplay: nomeDisplayTexto,
+    uid: uidTexto,
+  }
+  const docRef = await setDoc(doc(db, "posts/" + `${v4()}`), docData);
 }

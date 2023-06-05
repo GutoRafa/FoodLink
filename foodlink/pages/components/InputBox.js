@@ -1,14 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
-import { db, storage } from "../../firebase";
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  setDoc,
-  doc,
-} from "firebase/firestore";
-import { ref, getDownloadURL, uploadBytes, uploadString } from "firebase/storage";
+import { criarDocPost, uploadStorage } from "../../firebase";
 
 export default function InputBox() {
   const { currentUser } = useAuth();
@@ -17,8 +9,7 @@ export default function InputBox() {
   const arquivoRef = useRef();
   const [imagem, setImagem] = useState(null);
 
-  const postar = () => {
-    e.preventDefault();
+  const postar = (e) => {
     if (
       descRef.current.value === "" ||
       precoRef.current.value === "" ||
@@ -26,14 +17,19 @@ export default function InputBox() {
     ) {
       return alert("preencha todos os campos");
     }
-    try {
-      const storageRef = ref(storage, `posts/${v4()}`);
-      uploadString(storageRef, imagem, "data_url")
-    } catch (e) {
-      console.error(err);
-    }
-    descRef.current.value = "";
-    precoRef.current.value = "";
+    e.preventDefault();
+    const local = "posts";
+    uploadStorage(imagem, local).then((url) => {
+      criarDocPost(
+        descRef.current.value,
+        precoRef.current.value,
+        url,
+        currentUser.displayName,
+        currentUser.uid
+      ).then(removerImagem(),
+        descRef.current.value = "",
+        precoRef.current.value = "",);
+    });
   };
 
   const addImagem = (e) => {
@@ -44,8 +40,8 @@ export default function InputBox() {
 
     reader.onload = (readerEvent) => {
       setImagem(readerEvent.target.result);
-    }
-  }
+    };
+  };
 
   function removerImagem() {
     setImagem(null);
@@ -75,12 +71,7 @@ export default function InputBox() {
             className="rounded bg-orange-500 w-12 h-12 flex justify-center"
             onClick={() => arquivoRef.current.click()}
           >
-            <input
-              type="file"
-              onChange={addImagem}
-              ref={arquivoRef}
-              hidden
-            />
+            <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
             <img
               className="w-10 h-10 p-1"
               src="https://svgsilh.com/svg_v2/1710849.svg"

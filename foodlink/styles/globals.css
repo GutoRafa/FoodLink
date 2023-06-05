@@ -8,6 +8,6 @@
     }
 
     .input-padrao {
-        @apply w-[40%] rounded bg-orange-100 mt-2 h-8 text-sm font-medium focus:outline-none p-2
+        @apply w-[250px] rounded bg-orange-100 mt-2 h-8 text-sm font-medium focus:outline-none p-2
     }
 }
