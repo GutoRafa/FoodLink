@@ -18,13 +18,13 @@ export default function Home() {
       <Head>
         <title>FoodLink</title>
       </Head>
-      <main className="bg-orange-700">
-        <div className="flex flex-row justify-center">
+      <main className="bg-white">
+        <div className="flex flex-row justify-center border-orange-400 border-4">
           <div>
           <Sidebar />
           </div>
 
-          <div className="mx-2 p-2 w-[30%] bg-orange-400">
+          <div className="mx-2 p-2 w-[30%] bg-white">
           <Feed />
           </div>
 
