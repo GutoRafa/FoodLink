@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
-import { updateProfile } from "firebase/auth";
+import { useRouter } from "next/router";
 
 function Signup() {
   const nomeRef = useRef();
@@ -10,6 +10,7 @@ function Signup() {
   const { signup} = useAuth();
   const [error, setError] = useState("");
   const [carregando, setCarregando] = useState(false);
+  const router = useRouter();
 
 
   async function handleSubmit(e) {
@@ -26,7 +27,9 @@ function Signup() {
         emailRef.current.value,
         senhaRef.current.value,
         nomeRef.current.value
-      )} catch {
+      );
+    router.push("/")
+    } catch {
       setError("falha ao criar conta");
     }
     setCarregando(false);

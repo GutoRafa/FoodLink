@@ -8,13 +8,9 @@ export default function Login() {
   const [error, setError] = useState("");
 
   async function handleSubmit(e) {
-    e.preventDefault();
-
     try {
       setError("");
-      await login(emailRef.current.value, senhaRef.current.value).then((cred) =>
-        console.log(cred.user)
-      );
+      await login(emailRef.current.value, senhaRef.current.value);
     } catch {
       setError("Email ou senha incorretos");
     }
@@ -46,6 +42,7 @@ export default function Login() {
             Entrar
           </button>
         </form>
+        <a href="/signupPage"><p className="text-white">Não possui uma conta? Crie agora!</p></a>
       </div>
     </>
   );

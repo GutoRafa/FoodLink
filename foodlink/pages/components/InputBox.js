@@ -49,7 +49,7 @@ export default function InputBox() {
 
   return (
     <>
-      <form className="p-2 bg-orange-300 rounded-xl">
+      <form className="p-2 bg-white border-2 border-orange-400 rounded-xl">
         <div className="flex justify-between">
           <input
             className="input-padrao"
