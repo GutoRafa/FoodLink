@@ -17,7 +17,7 @@ export default function Login() {
   }
   return (
     <>
-      <div className="justify-center text-center p-2 bg-orange-400 m-6 w-auto h-min rounded-xl">
+      <div className="justify-center text-center p-2 bg-purple-400 m-6 w-auto h-min rounded-xl container">
         <h1 className="text-white font-bold text-center">LogIn</h1>
         {error && (
           <h1 className="text-center text-red-700 font-bold">{error}</h1>
@@ -38,11 +38,11 @@ export default function Login() {
             ref={senhaRef}
           />
 
-          <button type="submit" className="btn-pequeno">
+          <button type="submit" className="mt-2 btn-pequeno">
             Entrar
           </button>
         </form>
-        <a href="/signupPage"><p className="text-white">Não possui uma conta? Crie agora!</p></a>
+        <a href="/signupPage"><p className="text-white mt-2">Não possui uma conta? Crie agora!</p></a>
       </div>
     </>
   );

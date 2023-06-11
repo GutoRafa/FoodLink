@@ -36,8 +36,8 @@ function Signup() {
   }
 
   return (
-    <div className="justify-center text-center p-2 bg-orange-400 m-6 w-auto h-min rounded-xl">
-      <h1 className="text-white font-bold text-center">Crie sua conta</h1>
+    <div className=" border-2 border-black justify-center text-center p-2 bg-purple-400 m-6 w-[50%] h-min rounded-xl">
+      <h1 className="text-black  font-bold text-center">Crie sua conta</h1>
       {error && <h1 className="text-center text-red-700 font-bold">{error}</h1>}
       <form onSubmit={handleSubmit} className="flex flex-col items-center" id="signup">
         <input
@@ -69,10 +69,11 @@ function Signup() {
           ref={senhaConfirmaRef}
         />
 
-        <button type="submit" disabled={carregando} className="btn-pequeno">
+        <button type="submit" disabled={carregando} className="mt-2 btn-pequeno">
           Criar conta
         </button>
       </form>
+      <div className="py-2"><a href="/"><p className="underline inline">Já possui uma conta? Faça LogIn</p></a></div>
     </div>
   );
 }

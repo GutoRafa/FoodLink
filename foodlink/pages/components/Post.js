@@ -3,13 +3,13 @@ import React from 'react'
 function Post({nome, horario, desc, preco , imgUrl}) {
   
   return (
-    <div className='flex flex-col border-2 border-orange-400 my-2 p-2 rounded'>
+    <div className='flex flex-col border-2 border-purple-800 my-2 p-2 rounded'>
         <div>
-            <p className='text-medium font-bold text-black py-2'>{nome}</p>
+            <p className='text-medium font-bold text-black pb-2'>{nome}</p>
             <p>{}</p>
         </div>
         <div>
-            <img className='border-2 border-orange-100 w-[100%] h-[300px] object-cover rounded-sm'
+            <img className='border-2 border-purple-900 w-[100%] h-[300px] object-cover rounded-sm'
             src={imgUrl}
             />
         </div>
