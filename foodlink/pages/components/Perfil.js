@@ -13,14 +13,16 @@ export default function Perfil() {
   }
 
   return (
-    <div className="w-[300px] my-2 rounded-xl bg-white border-4 border-orange-400 p-2 flex flex-col">
+    <div className="sticky top-2">
+    <div className="w-[100%] my-2 rounded-xl bg-purple-400 border-2 border-purple-800 p-2 flex flex-col">
       <div>
       <img className="rounded-full w-10 inline" alt="foto de perfil" src={foto} />
       <h1 className="inline text-black font-bold px-2">{currentUser?.displayName}</h1>
       </div>
-      <button className="btn-pequeno" onClick={logout}>
+      <button className="btn-pequeno mt-2" onClick={logout}>
         logout
       </button>
+    </div>
     </div>
   );
 }

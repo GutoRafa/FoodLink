@@ -20,7 +20,7 @@ export default function Home() {
       </Head>
       <main className="bg-purple-300 flex justify-center">
         <div className="flex flex-row justify-center w-[90%] h-max">
-          <div className="w-[25%]">
+          <div className="w-[25%] h-screen sticky top-0">
           <Sidebar />
           </div>
 
@@ -30,7 +30,7 @@ export default function Home() {
           
 
           <div className="w-[25%]">
-          {!currentUser && <Login/>}
+          {!currentUser && <Login />}
           {currentUser && <Perfil />}
           </div>
 

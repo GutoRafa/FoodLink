@@ -49,7 +49,7 @@ export default function InputBox() {
 
   return (
     <>
-      <form className="p-2 bg-white border-2 border-orange-400 rounded-xl">
+      <form className="p-2 bg-purple-400 border-2 border-purple-800 rounded">
         <div className="flex justify-between">
           <input
             className="input-padrao"
@@ -60,15 +60,18 @@ export default function InputBox() {
 
           <input
             ref={precoRef}
-            className="input-padrao"
+            className="input-padrao "
             type="number"
             min="0.01"
             step="any"
             placeholder="preço"
           />
 
-          <div
-            className="rounded bg-orange-500 w-12 h-12 flex justify-center"
+          
+        </div>
+
+        <div
+            className="rounded bg-purple-500 w-12 h-12  flex justify-center"
             onClick={() => arquivoRef.current.click()}
           >
             <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
@@ -77,7 +80,6 @@ export default function InputBox() {
               src="https://svgsilh.com/svg_v2/1710849.svg"
             />
           </div>
-        </div>
 
         {imagem && (
           <div onClick={removerImagem}>

@@ -9,6 +9,7 @@ export default function Login() {
 
   async function handleSubmit(e) {
     try {
+      e.preventDefault();
       setError("");
       await login(emailRef.current.value, senhaRef.current.value);
     } catch {
@@ -17,7 +18,7 @@ export default function Login() {
   }
   return (
     <>
-      <div className="justify-center text-center p-2 bg-purple-400 m-6 w-auto h-min rounded-xl container">
+      <div className="justify-center text-center p-2 border-2 border-purple-800 bg-purple-400 m-6 w-auto h-min rounded-xl container">
         <h1 className="text-white font-bold text-center">LogIn</h1>
         {error && (
           <h1 className="text-center text-red-700 font-bold">{error}</h1>
