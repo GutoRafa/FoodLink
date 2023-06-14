@@ -36,7 +36,7 @@ function Signup() {
   }
 
   return (
-    <div className=" border-2 border-purple-800 justify-center text-center p-2 bg-purple-400 m-6 w-[50%] h-min rounded-xl">
+    <div className=" border-2 border-purple-800 justify-center text-center p-2 bg-purple-400 mx-auto w-[50%] h-min rounded-xl">
       <h1 className="text-black  font-bold text-center">Crie sua conta</h1>
       {error && <h1 className="text-center text-red-700 font-bold">{error}</h1>}
       <form onSubmit={handleSubmit} className="flex flex-col items-center" id="signup">
