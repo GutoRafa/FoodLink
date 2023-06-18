@@ -11,7 +11,8 @@ export default function Login() {
     try {
       e.preventDefault();
       setError("");
-      await login(emailRef.current.value, senhaRef.current.value);
+      await login(emailRef.current.value, senhaRef.current.value).then(
+        cred => console.log(cred.user));
     } catch {
       setError("Email ou senha incorretos");
     }

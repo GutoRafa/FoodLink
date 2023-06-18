@@ -1,10 +1,12 @@
 import React from "react";
 import { useAuth } from "../../contexts/AuthContexts";
+import { useRouter } from "next/router";
 
 export default function Perfil() {
   const { currentUser, logout } = useAuth();
-
+  const router = useRouter();
   var foto;
+
 
   if (!currentUser.photoURL) {
     foto = "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg";

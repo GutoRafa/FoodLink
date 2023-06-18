@@ -49,7 +49,7 @@ export default function InputBox() {
 
   return (
     <>
-      <form className="p-2 bg-purple-400 border-2 border-purple-800 rounded">
+      <form className="p-2 bg-purple-400 border-2 border-purple-800 rounded-2xl">
         <div className="flex justify-between">
           <input
             className="input-padrao"
@@ -71,7 +71,7 @@ export default function InputBox() {
         </div>
 
         <div
-            className="rounded bg-purple-500 w-12 h-12  flex justify-center"
+            className="rounded bg-purple-500 hover:bg-purple-600 cursor-pointer w-12 h-12  flex justify-center"
             onClick={() => arquivoRef.current.click()}
           >
             <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
@@ -88,7 +88,7 @@ export default function InputBox() {
           </div>
         )}
 
-        <button onClick={postar} className="mt-2 btn-pequeno">
+        <button onClick={postar} className="mt-2 btn-pequeno hover:bg-purple-600">
           Enviar postagem
         </button>
       </form>

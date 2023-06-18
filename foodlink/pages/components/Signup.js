@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
 import { useRouter } from "next/router";
+import { sendEmailVerification } from "firebase/auth";
 
 function Signup() {
   const nomeRef = useRef();
