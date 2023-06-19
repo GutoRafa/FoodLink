@@ -71,7 +71,7 @@ export default function Configuracoes() {
           src="https://svgsilh.com/svg_v2/1710849.svg"
         />
       
-      <button className="btn-pequeno" onClick={handleSubmit}>Alterar Foto</button>
+      <button className="btn-pequeno" onClick={alterarFoto}>Alterar Foto</button>
     </div>
   );
 }
