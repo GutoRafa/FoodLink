@@ -66,10 +66,7 @@ export default function Configuracoes() {
       
       
         <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
-        <img
-          className="w-10 h-10 p-1"
-          src="https://svgsilh.com/svg_v2/1710849.svg"
-        />
+        
       
       <button className="btn-pequeno" onClick={alterarFoto}>Alterar Foto</button>
     </div>
