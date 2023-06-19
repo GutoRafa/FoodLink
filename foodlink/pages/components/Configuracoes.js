@@ -8,6 +8,7 @@ export default function Configuracoes() {
   const { currentUser } = useAuth();
   const nome = useRef();
   const arquivoRef = useRef();
+  var foto = currentUser.photoURL;
 
   function alterarNome() {
     updateProfile(currentUser, {
@@ -43,12 +44,14 @@ export default function Configuracoes() {
   return (
     <div className="flex flex-col">
       <div className="font-bold text-black text-lg mb-4">Configurações</div>
+      <div className="flex items-center">
       <div className="" onClick={() => arquivoRef.current.click()}>
-        <img className="rounded-full h-40 w-40 object-cover" src={currentUser.photoURL}></img>
+        {!imagem && <img className="rounded-full h-40 w-40 object-cover" src={foto}></img>}
+        {imagem && <img className="rounded-full h-40 w-40 object-cover" src={imagem}></img>}
+        
       </div>
-      <div>
+      <div className="mx-2 flex">
       <h1 className="font-semibold inline">Alterar nome</h1>
-      <div className="flex">
         <input
           className="input-padrao mr-2 placeholder:text-gray-400"
           type="text"
@@ -56,11 +59,11 @@ export default function Configuracoes() {
           placeholder={currentUser.displayName}
           value={currentUser.displayName}
         />
-      
-        
+        <button className="btn-pequeno" onClick={alterarNome}>Salvar</button>
         </div>
-      </div>
-
+        </div>
+      
+      
       
         <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
         <img
