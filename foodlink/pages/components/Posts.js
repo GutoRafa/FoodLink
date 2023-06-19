@@ -20,6 +20,7 @@ function Posts() {
             desc={post.data().descricao}
             preco={post.data().preco}
             imgUrl={post.data().imagem}
+            fotoPerfil={post.data().fotoPerfil}
             />
         ))}
     </div>

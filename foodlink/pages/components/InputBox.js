@@ -25,7 +25,8 @@ export default function InputBox() {
         precoRef.current.value,
         url,
         currentUser.displayName,
-        currentUser.uid
+        currentUser.uid,
+        currentUser.photoURL
       ).then(removerImagem(),
         descRef.current.value = "",
         precoRef.current.value = "",);

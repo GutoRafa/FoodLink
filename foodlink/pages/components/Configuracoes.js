@@ -24,6 +24,11 @@ export default function Configuracoes() {
     });
   }
 
+  const handleSubmit = () => {
+    alterarFoto();
+    alterarNome();
+  }
+
   const addImagem = (e) => {
     const reader = new FileReader();
     if (e.target.files[0]) {
@@ -37,7 +42,11 @@ export default function Configuracoes() {
 
   return (
     <div className="flex flex-col">
-      <div className="font-bold text-black text-lg">Configurações</div>
+      <div className="font-bold text-black text-lg mb-4">Configurações</div>
+      <div className="" onClick={() => arquivoRef.current.click()}>
+        <img className="rounded-full h-40 w-40 object-cover" src={currentUser.photoURL}></img>
+      </div>
+      <div>
       <h1 className="font-semibold inline">Alterar nome</h1>
       <div className="flex">
         <input
@@ -45,24 +54,21 @@ export default function Configuracoes() {
           type="text"
           ref={nome}
           placeholder={currentUser.displayName}
+          value={currentUser.displayName}
         />
-        <button onClick={alterarNome} className="btn-pequeno">
-          Enviar
-        </button>
+      
+        
+        </div>
       </div>
 
-      <h1 className="font-semibold inline">Alterar foto</h1>
-      <div
-        className="rounded bg-purple-500 hover:bg-purple-600 cursor-pointer w-12 h-12  flex justify-center"
-        onClick={() => arquivoRef.current.click()}
-      >
+      
         <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
         <img
           className="w-10 h-10 p-1"
           src="https://svgsilh.com/svg_v2/1710849.svg"
         />
-      </div>
-      <button className="btn-pequeno" onClick={alterarFoto}>Alterar Foto</button>
+      
+      <button className="btn-pequeno" onClick={handleSubmit}>Alterar Foto</button>
     </div>
   );
 }

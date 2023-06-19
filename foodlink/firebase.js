@@ -32,7 +32,7 @@ export async function uploadStorage(file, local) {
 
 // Firestore
 
-export async function criarDocPost(descricaoTexto, precoTexto, imgUrl, nomeDisplayTexto, uidTexto) {
+export async function criarDocPost(descricaoTexto, precoTexto, imgUrl, nomeDisplayTexto, uidTexto,fotoPerfilTexto) {
   const docData = {
     descricao: descricaoTexto,
     preco: precoTexto,
@@ -40,6 +40,7 @@ export async function criarDocPost(descricaoTexto, precoTexto, imgUrl, nomeDispl
     horario: serverTimestamp(),
     nomeDisplay: nomeDisplayTexto,
     uid: uidTexto,
+    fotoPerfil: fotoPerfilTexto
   }
   const docRef = await setDoc(doc(db, "posts/" + `${v4()}`), docData);
 }
