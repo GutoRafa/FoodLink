@@ -6,12 +6,9 @@ This is a social media platform that aims to connect consumers to restaurants by
 ## Features
 
 - Timeline of restaurant products and promotions.
-- Ability to follow restaurants and receive notifications of their new products and promotions.
-- Ability to search for restaurants and filter by location, cuisine, and price range.
+- Ability to search for restaurants.
 - Ability for restaurants to create and manage their own profiles, post products and promotions, and interact with their followers.
 - User authentication and authorization using Firebase Authentication.
-- Real-time updates using Firebase Realtime Database.
-- Responsive design for mobile and desktop devices.
 
 ## Getting Started
 

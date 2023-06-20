@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
 import { useRouter } from "next/router";
-import { sendEmailVerification } from "firebase/auth";
+import { criarUser } from "@component/firebase";
 
 function Signup() {
   const nomeRef = useRef();
@@ -46,6 +46,7 @@ function Signup() {
           type="text"
           placeholder="nome"
           ref={nomeRef}
+          required
         />
 
         <input
@@ -61,6 +62,7 @@ function Signup() {
           type="password"
           placeholder="senha"
           ref={senhaRef}
+          required
         />
 
         <input
@@ -68,6 +70,7 @@ function Signup() {
           type="password"
           placeholder="confirme sua senha"
           ref={senhaConfirmaRef}
+          required
         />
 
         <button type="submit" disabled={carregando} className="mt-2 btn-pequeno">

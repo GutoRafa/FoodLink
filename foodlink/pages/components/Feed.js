@@ -6,6 +6,7 @@ import EmailVerificacao from './EmailVerificacao'
 
 function Feed() {
   const {currentUser} = useAuth()
+
   return (
     <>
     <div>{currentUser?.emailVerified && <InputBox/>}

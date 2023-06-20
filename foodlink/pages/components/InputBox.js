@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../contexts/AuthContexts";
 import { criarDocPost, uploadStorage } from "../../firebase";
 
@@ -17,20 +17,30 @@ export default function InputBox() {
     ) {
       return alert("preencha todos os campos");
     }
+    
+    async function fetchLoc() {
+      let url = 'https://ipinfo.io/json?token=e2670438e2eb02';
+      let response = await fetch(url);
+      var data = await response.json();
+      return data;
+    }
+
     e.preventDefault();
+    
     const local = "posts";
-    uploadStorage(imagem, local).then((url) => {
+    fetchLoc().then((data) => uploadStorage(imagem, local).then((url) => {
       criarDocPost(
         descRef.current.value,
         precoRef.current.value,
         url,
         currentUser.displayName,
         currentUser.uid,
-        currentUser.photoURL
-      ).then(removerImagem(),
+        currentUser.photoURL,
+        data.city
+        ).then(removerImagem(),
         descRef.current.value = "",
         precoRef.current.value = "",);
-    });
+    }));
   };
 
   const addImagem = (e) => {
