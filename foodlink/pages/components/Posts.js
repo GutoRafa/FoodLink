@@ -7,7 +7,7 @@ import Post from './Post'
 function Posts() {
     
     const postsColRef = collection(db, "posts")
-    const q = query(postsColRef,where("local", "==", "Patos de Minas") )
+    const q = query(postsColRef, where("local", "==", "Patos de Minas"))
     const [posts, loading , error] = useCollection(q)
 
   return (

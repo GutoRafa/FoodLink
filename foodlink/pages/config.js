@@ -15,7 +15,7 @@ export default function config() {
       </Head>
       <main className="bg-purple-300 flex justify-center">
         <div className="flex flex-row justify-center w-[90%] h-max">
-          <div className="w-[25%] h-screen sticky top-0">
+          <div className="w-[25%] h-screen sticky top-0 max-md:w-[10%]">
           <Sidebar />
           </div>
 

@@ -2,18 +2,18 @@ import React, { useEffect , useState } from 'react'
 import { db } from '@component/firebase'
 import { collection , where , query , orderBy } from 'firebase/firestore'
 import { useCollection } from 'react-firebase-hooks/firestore'
-import Post from './Post'
+import PostExplorar from './PostExplorar'
 
 function PostsExplorar() {
     
     const postsColRef = collection(db, "posts")
-    const q = query(postsColRef, where("local", "!=", "Patos de Minas"))
+    const q = query(postsColRef, orderBy("horario", "desc"))
     const [posts, loading , error] = useCollection(q)
 
   return (
-    <div>
+    <div className='grid box-border grid-cols-2'>
         {posts?.docs.map(post => (
-            <Post 
+            <PostExplorar 
             key={post.id}
             nome={post.data().nomeDisplay}
             horario={post.data().horario}

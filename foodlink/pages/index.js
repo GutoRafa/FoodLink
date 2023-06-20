@@ -20,7 +20,7 @@ export default function Home() {
     if (!currentUser) {
       router.push("/explorar");
     }
-  }, []);
+  });
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function Home() {
       </Head>
       <main className="bg-purple-300 flex justify-center">
         <div className="flex flex-row justify-center w-[90%] h-max">
-          <div className="w-[25%] h-screen sticky top-0">
+          <div className="w-[25%] h-screen max-md:w-[10%] sticky top-0">
           <Sidebar />
           </div>
           {currentUser &&

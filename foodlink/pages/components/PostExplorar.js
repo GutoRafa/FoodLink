@@ -1,7 +1,7 @@
 import React from 'react'
 import { useAuth } from "@component/contexts/AuthContexts";
 
-function Post({nome, horario, desc, preco , imgUrl, fotoPerfil}) {
+function PostExplorar({nome, horario, desc, preco , imgUrl, fotoPerfil}) {
   const {currentUser} = useAuth()
   var foto;
 
@@ -12,14 +12,13 @@ function Post({nome, horario, desc, preco , imgUrl, fotoPerfil}) {
   }
 
   return (
-    <div className='flex flex-col bg-purple-500 hover:bg-purple-600 my-4 p-2 rounded-2xl'>
+    <div className='inline-block bg-purple-500 hover:bg-purple-600 my-1 p-2 rounded-2xl w-[20vw]'>
         <div className='m-2'>
           <img className='inline rounded-full h-10 w-10 mr-2' src={foto}></img>
             <p className='inline text-xl font-bold text-black pb-2'>{nome}</p>
-            <p className='inline pl-2'>{new Date(horario?.toDate()).toLocaleDateString()} às {new Date(horario?.toDate()).toLocaleTimeString()}</p>
         </div>
         <div>
-            <img className='border-2 border-purple-900 my-2 w-[100%] h-[20vw] object-cover rounded-sm'
+            <img className='border-2 border-purple-900 my-2 w-[100%] h-[10vw] object-cover rounded-sm'
             src={imgUrl}
             />
         </div>
@@ -31,4 +30,4 @@ function Post({nome, horario, desc, preco , imgUrl, fotoPerfil}) {
   )
 }
 
-export default Post
+export default PostExplorar

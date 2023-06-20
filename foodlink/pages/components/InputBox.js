@@ -63,7 +63,7 @@ export default function InputBox() {
       <form className="p-2 bg-purple-400 border-2 border-purple-800 rounded-2xl">
         <div className="flex justify-between">
           <input
-            className="input-padrao"
+            className="input-padrao mr-2"
             type="text"
             placeholder="Descrição"
             ref={descRef}
@@ -94,7 +94,7 @@ export default function InputBox() {
 
         {imagem && (
           <div onClick={removerImagem}>
-            <img className="h-[450px] w-[100%] object-cover" src={imagem} alt="imagem" />
+            <img className="w-[100%] h-[20vw] mt-2 object-cover" src={imagem} alt="imagem" />
             <p className="text-red-700 text-bold">Clique para remover</p>
           </div>
         )}
