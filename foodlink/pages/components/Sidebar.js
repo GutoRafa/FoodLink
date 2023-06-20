@@ -9,7 +9,7 @@ function Sidebar() {
       <a href="/">
         <p className="font-bold text-black ml-4 mt-2 text-xl">Home</p>
       </a>
-      <a href="/">
+      <a href="/explorar">
         <p className="font-bold text-black ml-4 mt-2 text-xl">Explorar</p>
       </a>
       {currentUser &&
