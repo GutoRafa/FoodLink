@@ -1,16 +1,26 @@
 import { Inter } from "next/font/google";
+import { useEffect } from "react";
 import Head from "next/head";
 import Sidebar from "./components/Sidebar";
 import Feed from "./components/Feed";
 import Login from "./components/Login";
 import { useAuth } from "../contexts/AuthContexts";
 import Perfil from "./components/Perfil";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  
 
   const { currentUser } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!currentUser) {
+      router.push("/explorar");
+    }
+  }, []);
 
   return (
     <>

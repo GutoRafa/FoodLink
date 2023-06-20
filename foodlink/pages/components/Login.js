@@ -1,11 +1,13 @@
 import { useAuth } from "@component/contexts/AuthContexts";
 import React, { useRef, useState } from "react";
+import { useRouter } from "next/router";
 
 export default function Login() {
   const emailRef = useRef();
   const senhaRef = useRef();
   const { login } = useAuth();
   const [error, setError] = useState("");
+  const router = useRouter();
 
   async function handleSubmit(e) {
     try {
@@ -13,6 +15,7 @@ export default function Login() {
       setError("");
       await login(emailRef.current.value, senhaRef.current.value).then(
         cred => console.log(cred.user));
+        router.push("/");
     } catch {
       setError("Email ou senha incorretos");
     }
