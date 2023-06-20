@@ -9,8 +9,8 @@ export default function Configuracoes() {
   const nome = useRef();
   const arquivoRef = useRef();
   var foto = currentUser.photoURL;
-
-  function alterarNome() {
+const alterarNome = (e) => {
+  e.preventDefault();
     updateProfile(currentUser, {
       displayName: nome,
     });
@@ -50,25 +50,15 @@ export default function Configuracoes() {
         {imagem && <img className="rounded-full h-40 w-40 object-cover" src={imagem}></img>}
         
       </div>
-      <div className="mx-2 flex">
-      <h1 className="font-semibold inline">Alterar nome</h1>
-        <input
-          className="input-padrao mr-2 placeholder:text-gray-400"
-          type="text"
-          ref={nome}
-          placeholder={currentUser.displayName}
-          value={currentUser.displayName}
-        />
-        <button className="btn-pequeno" onClick={alterarNome}>Salvar</button>
-        </div>
-        </div>
-      
-      
-      
-        <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
+      <input type="file" onChange={addImagem} ref={arquivoRef} hidden />
         
       
-      <button className="btn-pequeno" onClick={alterarFoto}>Alterar Foto</button>
+      <button className="btn-pequeno h-16 ml-4" onClick={alterarFoto}>Alterar Foto</button>
+        </div>
+      
+      
+      
+        
     </div>
   );
 }

@@ -28,7 +28,7 @@ export default function InputBox() {
     e.preventDefault();
     
     const local = "posts";
-    fetchLoc().then((data) => uploadStorage(imagem, local).then((url) => {
+    uploadStorage(imagem, local).then((url) => {
       criarDocPost(
         descRef.current.value,
         precoRef.current.value,
@@ -36,11 +36,11 @@ export default function InputBox() {
         currentUser.displayName,
         currentUser.uid,
         currentUser.photoURL,
-        data.city
+        "Patos de Minas"
         ).then(removerImagem(),
         descRef.current.value = "",
         precoRef.current.value = "",);
-    }));
+    });
   };
 
   const addImagem = (e) => {

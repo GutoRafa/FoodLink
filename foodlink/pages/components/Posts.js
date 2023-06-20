@@ -1,13 +1,13 @@
 import React, { useEffect , useState } from 'react'
 import { db } from '@component/firebase'
-import { collection , getDocs , query , orderBy } from 'firebase/firestore'
+import { collection , where , query , orderBy } from 'firebase/firestore'
 import { useCollection } from 'react-firebase-hooks/firestore'
 import Post from './Post'
 
 function Posts() {
     
     const postsColRef = collection(db, "posts")
-    const q = query(postsColRef, orderBy("horario", "desc"))
+    const q = query(postsColRef,where("local", "==", "Patos de Minas") )
     const [posts, loading , error] = useCollection(q)
 
   return (
