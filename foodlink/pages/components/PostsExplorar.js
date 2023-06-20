@@ -11,7 +11,7 @@ function PostsExplorar() {
     const [posts, loading , error] = useCollection(q)
 
   return (
-    <div className='grid box-border grid-cols-2'>
+    <div className='grid box-border grid-cols-2 max-sm:flex-col max-sm:flex'>
         {posts?.docs.map(post => (
             <PostExplorar 
             key={post.id}

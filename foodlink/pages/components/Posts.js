@@ -21,6 +21,7 @@ function Posts() {
             preco={post.data().preco}
             imgUrl={post.data().imagem}
             fotoPerfil={post.data().fotoPerfil}
+            uid={post.data().uid}
             />
         ))}
     </div>

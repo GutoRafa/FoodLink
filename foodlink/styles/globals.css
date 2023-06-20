@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+*::-webkit-scrollbar {
+    width: 15px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: rgb(176, 148, 207);
+    border-radius: 5px;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: rgb(150, 79, 221);
+    border-radius: 14px;
+    border: 3px solid rgb(203, 181, 224);
+  }
+
 @layer components {
     .btn-pequeno{
         @apply bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded

@@ -12,19 +12,19 @@ function PostExplorar({nome, horario, desc, preco , imgUrl, fotoPerfil}) {
   }
 
   return (
-    <div className='inline-block bg-purple-500 hover:bg-purple-600 my-1 p-2 rounded-2xl w-[20vw]'>
-        <div className='m-2'>
-          <img className='inline rounded-full h-10 w-10 mr-2' src={foto}></img>
-            <p className='inline text-xl font-bold text-black pb-2'>{nome}</p>
+    <div className='inline-block bg-purple-500 hover:bg-purple-600 mb-2 pb-2 rounded-md w-[20vw] max-sm:w-full'>
+        <div className='max-sm:hidden flex items-center bg-purple-700 absolute  ml-0 py-0 px-2'>
+          <img className='shadow-lg inline rounded-full h-6 w-6 mr-2' src={foto}></img>
+            <p className='inline text-xl font-bold text-white drop-shadow-[0_2.2px_2.2px_rgba(0,0,0,0.8)]  pb-2'>{nome}</p>
         </div>
-        <div>
-            <img className='border-2 border-purple-900 my-2 w-[100%] h-[10vw] object-cover rounded-sm'
+        <div className='block'>
+            <img className='border-2 border-purple-900 mb-2 w-[100%] h-[10vw] max-sm:h-[40vw] object-cover rounded-sm'
             src={imgUrl}
             />
         </div>
         <div className='flex flex-row'>
-            <p className='text-black w-[70%]'>{desc}</p>
-            <p className='text-black font-semibold'>R${preco}</p>
+            <p className='text-white  font-semibold w-[70%] ml-2'>{desc}</p>
+            <p className='text-white font-bold mr-2'>R${preco}</p>
         </div>
     </div>
   )

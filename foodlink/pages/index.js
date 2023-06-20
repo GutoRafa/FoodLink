@@ -28,12 +28,12 @@ export default function Home() {
         <title>FoodLink</title>
       </Head>
       <main className="bg-purple-300 flex justify-center">
-        <div className="flex flex-row justify-center w-[90%] h-max">
+        <div className="flex flex-row justify-center max-sm:[100%] w-[90%] h-max">
           <div className="w-[25%] h-screen max-md:w-[10%] sticky top-0">
           <Sidebar />
           </div>
           {currentUser &&
-          <div className="mx-2 p-2 w-[50%] border-2 border-purple-800 bg-purple-400">
+          <div className="mx-2 p-2 w-[50%] max-sm:w-[75%] border-2 border-purple-800 bg-purple-400">
           <Feed />
           </div>}
           {!currentUser &&
@@ -42,7 +42,7 @@ export default function Home() {
           </div>}
           
 
-          <div className="w-[25%]">
+          <div className="w-[25%] max-sm:hidden">
           {!currentUser && <Login />}
           {currentUser && <Perfil />}
           </div>

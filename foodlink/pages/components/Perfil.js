@@ -19,7 +19,7 @@ export default function Perfil() {
     <div className="w-[100%] my-2 rounded-xl bg-purple-400 border-2 border-purple-800 p-2 flex flex-col">
       <div>
       <img className="rounded-full w-10 h-10 inline" alt="foto de perfil" src={foto} />
-      <h1 className="inline text-black font-bold px-2">{currentUser?.displayName}</h1>
+      <h1 className="inline text-white font-bold px-2">{currentUser?.displayName}</h1>
       </div>
       <button className="btn-pequeno mt-2" onClick={logout}>
         logout
