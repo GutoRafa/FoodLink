@@ -73,7 +73,7 @@ export default function Configuracoes() {
         </button>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-row items-center">
+      <form  className="flex flex-row items-center">
         <label
           for="telefone"
           className="mr-2 font-bold placeholder:text-gray-500"
