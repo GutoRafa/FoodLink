@@ -1,6 +1,6 @@
-import React, { useEffect , useState } from 'react'
+import React from 'react'
 import { db } from '@component/firebase'
-import { collection , getDocs , query , orderBy } from 'firebase/firestore'
+import { collection , where , query , orderBy } from 'firebase/firestore'
 import { useCollection } from 'react-firebase-hooks/firestore'
 import Post from './Post'
 
