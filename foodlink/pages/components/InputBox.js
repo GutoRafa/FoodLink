@@ -94,7 +94,7 @@ export default function InputBox() {
 
         {imagem && (
           <div onClick={removerImagem}>
-            <img className="h-[300px]" src={imagem} alt="imagem" />
+            <img className="h-[450px] w-[100%] object-cover" src={imagem} alt="imagem" />
             <p className="text-red-700 text-bold">Clique para remover</p>
           </div>
         )}
