@@ -28,7 +28,7 @@ const docSnap = getDoc(docRef);
       <div className="m-2 flex">
         <img className="inline rounded-full h-10 w-10 mr-2" src={foto}></img>
         <p className="inline text-xl font-bold text-white pb-2">{nome}</p>
-        <p className="inline pl-2">
+        <p className="inline pl-2 max-sm:hidden">
           {new Date(horario?.toDate()).toLocaleDateString()} às{" "}
           {new Date(horario?.toDate()).toLocaleTimeString()}
         </p>
